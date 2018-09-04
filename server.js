@@ -19,6 +19,11 @@ const client = new textToSpeech.TextToSpeechClient();
 let outputFile = "./tempDownloads/download_" + Math.floor(Math.random() * 1000000000) + ".mp3";
 const introTextOrigin = "For the subreddit of /r/ ";
 let introText = introTextOrigin;
+const dataError = {
+    "message": "Subreddit Not Found",
+    "error": 404
+    };
+
 
 process.on('unhandledRejection', (reason, p) => {
     console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
@@ -83,13 +88,26 @@ app.route('/api/redditApi/requestText')
             url: apiCall,
             json: true
           },(error, response, data) => {
+              //to catch all errors - error / 404 / subreddit search
+            if(error || data.error || data.data.dist == 0){
             if(error){
-              console.log('error', error);
-              res.send('error');
+                console.log('error', error);
+                res.send(error)
+                }else{
+                    if(data.error){
+                    console.log('data.error', data.error);
+                    res.send(dataError)
+                }else{
+                    if(data.data.dist ==0){
+                console.log('data.dist ==0');
+                res.send(dataError)   
+                    }
+                 }
+                }
             }else{
               let topPosts = [];
               let urlsArray = [];
-              if(data.data.children){
+              if(data.data && data.data.children){
             data.data.children.forEach(element => {
               topPosts.push(element.data.title);
               if(element.data.url){urlsArray.push(element.data.url)}
@@ -125,16 +143,24 @@ app.route('/api/redditApi/formatText')
         url: 'http://localhost/api/redditApi/requestText',
         form: {subreddit:subreddit, postCount: postCount, sortBy: sortBy, timeLimit: timeLimit}
       },(error, response, data) => {
-        if(error){
-          console.log('error', error);
-          res.send('error');
+        if(data){ data = JSON.parse(data);}
+        if(error || data.error ){
+            if(error){
+                console.log('error', error);
+                res.send(error)
+                }else{
+                    if(data.error){
+                    console.log('data.error', data.error);
+                    res.send(dataError)
+                }
+            }
         }else{
         if(data){
             console.log("formatText has retreived the data");
-            // console.log("response   ==   " + response.body);
             response = JSON.parse(response.body);
             let untemplatedText = response.untemplatedText
             let templatedText = applyTemplate(untemplatedText);
+            console.log("format text has templated the data")
             res.send(templatedText);}    
       }
     })
@@ -159,15 +185,24 @@ app.route('/api/redditApi/autoPodcast')
         url: 'http://localhost/api/redditApi/formatText',
         form: {subreddit:subreddit, postCount: postCount, sortBy: sortBy, timeLimit: timeLimit}
       },(error, response, data) => {
-        if(error){
-          console.log('error', error);
-          res.send('error');
+        console.log("retreived templated text")
+        // if(data && !data.untemplatedText || data && !data.error ){ data = JSON.parse(data);}
+        if(error || data.error ){
+        console.log("templated text invalid - shortcast")
+            if(error){
+                console.log('error', error);
+                res.send(error)
+                }else{
+                    if(data.error){
+                    console.log('data.error', data.error);
+                    res.send(dataError)
+                }
+            }
         }else{
 
 
         if(data){
-            console.log("templated data ready for audio process");
-
+            console.log("templated data valid and ready for audio process");
             setTimeout(() => {
                getAudio(data);
                res.render('download.ejs', {
@@ -199,15 +234,22 @@ app.route('/api/redditApi/obtainArticles')
         url: 'http://localhost/api/redditApi/requestText',
         form: {subreddit:subreddit, postCount: postCount, sortBy: sortBy, timeLimit: timeLimit}
       },(error, response, data) => {
-        if(error){
-          console.log('error', error);
-          res.send('error');
+        if(data){ data = JSON.parse(data);}
+        if(error || data.error ){
+            if(error){
+                console.log('error', error);
+                res.send(error)
+                }else{
+                    if(data.error){
+                    console.log('data.error', data.error);
+                    res.send(dataError)
+                }
+            }
         }else{
         if(data){
-            console.log("obtainArticles has retreived the URLS");
-            // console.log("response   ==   " + response.body);
+            console.log("obtainArticles has retreived the URLS" );
             response = JSON.parse(response.body);
-            console.log("incoming data for obtainArticles = " + response)
+            // console.log("incoming data for obtainArticles = " + response)
             let titlesArray = response.untemplatedText;
             let urlsArray = response.urlsArray;
             let articleDataArray = Array(titlesArray.length).fill(null)
@@ -273,17 +315,25 @@ app.route('/api/redditApi/autoPodcastComplete')
         url: 'http://localhost/api/redditApi/obtainArticles',
         form: {subreddit:subreddit, postCount: postCount, sortBy: sortBy, timeLimit: timeLimit}
       },(error, response, data) => {
-        if(error){
-          console.log('error', error);
-          res.send('error');
+        if(data){ data = JSON.parse(data);}
+        if(error || data.error ){
+            if(error){
+                console.log('error', error);
+                res.send(error)
+                }else{
+                    if(data.error){
+                    console.log('data.error', data.error);
+                    res.send(dataError)
+                }
+            }
         }else{
 
 
         if(data){
-            // console.log("templated data ready for audio process = " + data);
+            console.log("templated data ready for audio process = " + data);
            
-            data = JSON.parse(data);
-            console.log(data);
+            // data = JSON.parse(data);
+            // console.log(data);
 
             data.forEach((element, index) => {
                 setTimeout(() => {
@@ -302,8 +352,6 @@ app.route('/api/redditApi/autoPodcastComplete')
       }
     })
 })
-
-
 
 
 
@@ -428,7 +476,68 @@ const listener = app.listen(process.env.PORT || 80, () => {
 
 
 
+
 // FUNCTIONs
+
+function datenow() {
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+    var dt = year + "/" + month + "/" + day;
+    return dt
+}
+
+function getUnixTime(inp) {
+    var validDate = [];
+    var Answered = {};
+
+    if (chrono.parse(inp).length !== 0) {
+        var url_parts = chrono.parse(inp);
+        // res.send(url_parts )
+
+
+        var abra = []; // holds the array for year month day
+        abra[0] = url_parts[0]['start']['knownValues']['day'];
+        abra[1] = url_parts[0]['start']['knownValues']['month'];
+        abra[2] = url_parts[0]['start']['knownValues']['year']
+        for (var i = 0; i < abra.length; i++) {
+            // abra[i] = n(abra[i]);
+        }
+
+        // fills blanks
+        var abraString = String(abra[2]) + '-' + String(abra[1]) + '-' + String(abra[0]); //fixes format
+
+
+        var Alakazam = abraString
+
+        var unixTimestamp = moment(Alakazam, "YYYY-MM-DD").unix(); // VALID UNIX CONVERSION DONE
+        Alakazam = moment.unix(unixTimestamp).format("DD/MMM/YYYY");
+
+        Answered = {
+            "unixTime": unixTimestamp,
+            "naturalTime": Alakazam
+        };
+
+
+
+
+
+        return Answered;
+    } else {
+        if (true) {
+            // if unix date rather than natural date
+            var Alakazam = moment.unix(inp).format("DD/MMM/YYYY");
+            Answered = {
+                "unixTime": inp,
+                "naturalTime": Alakazam
+            };
+
+            return Answered;
+        }
+    }
+
+}
 
 function applyTemplate(a){
     // let initialArray = a;
@@ -461,7 +570,12 @@ function stringifyNumber(n) {
 function getAudio(templatedData){
 //   console.log("getAudio   =  "  +  templatedData);
 
-// Construct the request
+    //check to fit 5000 character limit:
+    if(templatedData.length > 4999){templatedData = templatedData.slice(0,4950) + ". END. Word limit reached.Rest of file omitted."}
+
+
+
+    // Construct the request
   const request = {
     input: {text: templatedData},
     // Select the language and SSML Voice Gender (optional) en-US-Wavenet-A
@@ -471,7 +585,7 @@ function getAudio(templatedData){
   };
 
 
-// Performs the Text-to-Speech request
+    // Performs the Text-to-Speech request
   client.synthesizeSpeech(request, (err, response) => {
     if (err) {
       console.error('ERROR:', err);
@@ -480,7 +594,7 @@ function getAudio(templatedData){
       return;
     }
 
-// Write the binary audio content to a local file
+    // Write the binary audio content to a local file
   fs.writeFile(outputFile,  response.audioContent, 'binary', err => {
     if (err) {
      console.log("error at fs writefile")
@@ -492,7 +606,7 @@ function getAudio(templatedData){
   });
 });
 
-// response.audioContent, 'binary'
+    // response.audioContent, 'binary'
 
 
 }
@@ -500,6 +614,14 @@ function getAudio(templatedData){
 function getAudioSplit(templatedData, index){
     //   console.log("getAudio   =  "  +  templatedData);
     
+    //check to fit 5000 character limit:
+    if(templatedData.length > 4999){templatedData = templatedData.slice(0,4950) + ". END. Word limit reached.Rest of file omitted."}
+
+    let newEnd = "_" + index + ".mp3";
+    let outputFileSplit = outputFile.replace(".mp3", newEnd)
+    //tracks files to serve
+    linkarray.push(outputFileSplit.slice(1))
+
     // Construct the request
       const request = {
         input: {text: templatedData},
@@ -520,9 +642,7 @@ function getAudioSplit(templatedData, index){
         }
 
 
-        let newEnd = "_" + index + ".mp3";
-        let outputFileSplit = outputFile.replace(".mp3", newEnd)
-        linkarray.push(outputFileSplit.slice(1))
+
 
     // Write the binary audio content to a local file
       fs.writeFile(outputFileSplit,  response.audioContent, 'binary', err => {
@@ -539,7 +659,7 @@ function getAudioSplit(templatedData, index){
     // response.audioContent, 'binary'
     
     
-    }
+}
     
     
 
