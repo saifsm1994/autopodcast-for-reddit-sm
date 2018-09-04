@@ -1,5 +1,6 @@
 # autopodcast-for-reddit-sm
 
+A live version of this service should be available at http://myapi.host
 
 This is a node.js app which allows users to scrape a chosen Subreddit for posts and articles and then produce a audio file
 
