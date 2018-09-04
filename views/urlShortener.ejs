@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/head %>
+</head>
+
+<body class="" style="overflow-x: hidden;">
+    <!-- Navigation -->
+    <!--    <header>-->
+    <% include partials/navbar  %>
+        <!--    </header>-->
+
+
+
+        <main>
+            <div class="parallax4 jumbotron" id="home" style="height: 100%;">
+                <div class="row">
+                    <div class="col-lg-4 offset-lg-4">
+                        <h1 class="text-center text-white">URL Shortening Microservice</h1>
+                    </div>
+                    <div class="col-lg-4 offset-lg-4">
+                        <h6 class="text-center text-white">Use the form included below or URL path to shorten a desired URL.</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 offset-lg-4 offset-md-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="card-body">
+                            <div class="text-center card text-white bg-info mb-3">
+                                <form action="/shortenme" method="POST">
+                                    <input type="text" name="urlInput" placeholder="URL to shorten">
+                                    <button>
+                                        I have entered a url
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 offset-lg-3 offset-md-6 col-md-3 col-sm-12 col-xs-12">
+                        <div class="card-body">
+                            <div class="text-center card text-white bg-secondary mb-3">
+                                <h6>
+                                    Alternate Usage Method: <a style="color:blue">/shortenmeget/[URL HERE]</a>
+                                    <br> Example 1: <a style="color:blue">/shortenmeget/http://https://www.freecodecamp.org/</a>
+                                    <br> Example 2: <a style="color:blue">/shortenmeget/http://www.google.com</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 offset-lg-3 offset-md-6 col-md-3 col-sm-12 col-xs-12">
+                        <div class="card-body">
+                            <div class="text-center card text-white bg-primary mb-3">
+                                <h6>
+                                    Shortened link usage: - To use your shortened link go to /sh/[YourKeyHere]
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <% include partials/footer %>
+        </footer>
+
+        <script>
+            $(document).ready(function() {
+                $('[data-toggle="dropdown"]').dropdown();
+            });
+
+        </script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+
+<body class="container0">
+
+    <!--    <header>-->
+    <% include ../views/partials/navbar  %>
+        <!--    </header>-->
+
+        <main>
+            <div class="jumbotron ">
+                <div class="mt-5 row">
+                    <div class="col-lg-8 offset-lg-2 col-sm-12 col-xs-12 offset-md-0">
+                        <h1 class="text-center">Reddit Scraping APIs</h1>
+                        <h3 class="text-center">By <a href="http://www.saifsm.com">Saif Mustafa</a></h3>
+                        <br>
+                        <h4><span style="font-weight: bold; ">
+                            Description:</span> These APIs were built for the autopodcast service. <br>
+                            These return arrays of scraped titles, summarized articles, and a combination of the two in a decipherable template <br>
+                            They display how gathered data is handled at each step of the auto podcast process.  <br>
+                            Additionally these can be used with other forms of text to speech software directly for longer or more customized mp3 files.</h4>
+                        <br><br>
+                        <h4 class="text-center">Notes</h4>
+                        <h5><span style="font-weight: bold; ">Usage:</span> Each of these API's use post requests and accept a parameters of subreddit, sortBy, postCount and timeLimit .</h5>
+                        <!-- <h5><span style="font-weight: bold; ">Small APIs:</span> These are small challenge projects built for the FCC backend developer certification.</h5> -->
+                        <br>
+                        <ul>
+                                <li>subreddit: Any subreddit name - do not include the "/r/"</li>
+                                <li>sortBy: hot, top, controversial or new</li>
+                                <li>postCount: Number of posts to fetch. Max: 40, Min: 1</li>
+                                <li>timeLimit: day, month, year or all</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <% include ../views/partials/footer %>
+        </footer>
+
+</body>
+
+</html>

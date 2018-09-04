@@ -1,0 +1,6 @@
+{
+"name": "autopodcast-for-reddit-sm",
+"description": "Service which creates an automatic podcast of a given subreddit. Includes several scraping and summarizing apis",
+"repository": "https://github.com/saifsm1994/autopodcast-for-reddit-sm",
+"keywords": ["node", "express", "google apis", "wavenet", "lexrank", "text summarization"],
+}

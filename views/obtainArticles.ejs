@@ -1,0 +1,44 @@
+<!-- views/pages/Autopodcast.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+
+<body class="container0">
+
+    <!--    <header>-->
+    <% include ../views/partials/navbar  %>
+        <!--    </header>-->
+
+    <main>
+    <div class="container">
+        <div class="jumbotron">
+                <h1 class="display-4">Reddit article scraping & Summarizing api.</h1>
+                <p class="lead">This API scrapes a subreddit and provides a summary of every article.</p>
+                <hr class="my-4">
+                <p> It works by scraping a list of articles, which it then summarizes with the lexrank npm package.
+                    Finally it applies a template indicating the title and position of each article and returns an array.
+                </p>
+                <br>
+                <p class="lead" style="color: red">Please note this api takes 5 seconds to run. Please don't call it multiple times.</p>
+
+        </div>
+                    
+        <form  action="/api/redditApi/obtainArticles" method="post">
+            <% include ../views/partials/redditForm  %>
+        </form>
+
+
+    </div>
+    </main>
+
+        <footer>
+            <% include ../views/partials/footer %>
+        </footer>
+
+</body>
+
+</html>

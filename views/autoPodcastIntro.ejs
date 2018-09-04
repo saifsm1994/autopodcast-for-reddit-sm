@@ -1,0 +1,45 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+
+<body class="container0">
+
+    <!--    <header>-->
+    <% include ../views/partials/navbar  %>
+        <!--    </header>-->
+
+        <main>
+            <div class="jumbotron ">
+                <div class="mt-5 row">
+                    <div class="col-lg-8 offset-lg-2 col-sm-12 col-xs-12 offset-md-0">
+                        <h1 class="text-center">Auto-Podcast for Reddit</h1>
+                        <h3 class="text-center">By <a href="http://www.saifsm.com">Saif Mustafa</a></h3>
+                        <br>
+                        <h4><span style="font-weight: bold; ">
+                            Description:</span> This service is a tool which produces a ebook/podcast version of any particular subreddit. This service is built in node.js and uses google wavenet voice apis & lexrank based text summarization</h4>
+                        <br><br>
+                        <h4 class="text-center">Notes</h4>
+                        <h5><span style="font-weight: bold; ">Options:</span> There are two available options.</h5>
+                        <!-- <h5><span style="font-weight: bold; ">Small APIs:</span> These are small challenge projects built for the FCC backend developer certification.</h5> -->
+                        <br>
+                        <ul>
+                                <li>short: Only grabs post titles for the podcast</li>
+                                <li>complete: Grabs both post titles and post/article summaries</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <% include ../views/partials/footer %>
+        </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+
+<body class="container0">
+
+    <!--    <header>-->
+    <% include ../views/partials/navbar  %>
+        <!--    </header>-->
+
+    <main>
+    <div class="container">
+        <div class="jumbotron">
+                <h1 class="display-4">Your file is being created</h1>
+                <p class="lead">Please wait a few seconds and click the buttons below. </p>
+                <!-- <p class="lead" style="color: red">Warning: These files may not work with certain mp3 players such as VLC. </p> -->
+                <hr class="my-4">
+                <!-- <p>It uses regular consumer calls and is therefore limited in the number of daily uses.</p> -->
+
+                <% if(locals.link) { %>
+                <% locals.link.forEach((element,index) => { %>
+
+                <a type="button" class="btn btn-primary"
+                <% if (!element) { %>
+                    disabled
+                  <% } %>
+                 href="
+                 <% if (element) { %>
+                 <%=element%>
+                 <% } %>
+                 ">Download Article 
+                <%= index %>
+                </a>
+
+                 <% }) %>
+                 <% } %>
+                 <br><br>
+
+        
+            </div>
+
+
+          <footer>
+                <% include ../views/partials/footer %>
+        </footer>
+    
+
+    </div>
+
+    </main>
+
+
+</body>
+
+</html>

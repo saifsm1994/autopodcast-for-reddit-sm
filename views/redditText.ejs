@@ -1,0 +1,43 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+
+<body class="container0">
+
+    <!--    <header>-->
+    <% include ../views/partials/navbar  %>
+        <!--    </header>-->
+
+    <main>
+    <div class="container">
+        <div class="jumbotron">
+                <h1 class="display-4">Reddit subreddit scraping API.</h1>
+                <p class="lead">This API calls the reddit api and returns a readout of any particular subreddit</p>
+                <hr class="my-4">
+                <p>It uses regular consumer calls and is therefore limited in the number of daily uses.</p>
+        </div>
+                    
+        <form  action="/api/redditApi/requestText" method="post">
+
+                <% include ../views/partials/redditForm  %>
+
+        </form>
+
+
+
+    </div>
+
+    </main>
+
+        <footer>
+            <% include ../views/partials/footer %>
+        </footer>
+
+</body>
+
+</html>

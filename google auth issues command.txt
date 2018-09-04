@@ -1,0 +1,17 @@
+Note to self:
+
+Ubuntu has issues with google auth for the text to speech api: 
+
+There is a new line in the key file which causes the auth program to be unable to read the json key if it is copied
+and pasted into a new blank file
+
+Additionally the other forms of auth have an issue in which the wrong or nonexistant account is used which then fails the api call
+
+The solution:
+
+FTP over the key, place the server in the ftp directory, and run the following command
+
+gcloud auth activate-service-account --key-file=../../ftp/files/auto-podcast-sm-c29cba978f70.json
+
+
+where the keyfile position is changed to wherever it actually is

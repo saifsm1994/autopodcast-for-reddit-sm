@@ -1,0 +1,346 @@
+.activeGreen {
+    display: block;
+    background-color: darkcyan;
+    border-radius: 3%;
+    font-size: 20px;
+}
+
+}
+
+.bt-txt-wh-3 {
+    color: white !important;
+}
+
+.blackGrad {
+    /* The image used */
+    background-image: url("images/blackSilver%20gradient.jpg");
+    /*        ../public/images/blackSilver%20gradient.jpg");*/
+    /* Set a specific height */
+    min-height: 100px;
+    margin-top: 50px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("images/blackSilver%20gradient.jpg");
+    /*        ../public/images/blackSilver%20gradient.jpg");*/
+    /* Set a specific height */
+    min-height: 300px;
+    margin-top: 50px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax1 {
+    /* The image used */
+    background-image: url("images/green%20gradient.jpg");
+    /*    background-image: url("../public/images/astrology-astronomy-clouds-1142950.jpg");*/
+    /*        ../public/images/blackSilver%20gradient.jpg");*/
+    /* Set a specific height */
+    min-height: 500px;
+
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax2 {
+    /* The image used */
+    background-image: url("images/blue%20gradient.jpg");
+    /*    background: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, .6)), url("../public/images/blackSilver gradient.jpg");*/
+    /*    background-image: url("../public/images/astrology-astronomy-clouds-1142950.jpg");*/
+    /*        ../public/images/blackSilver%20gradient.jpg");*/
+    /* Set a specific height */
+    min-height: 500px;
+
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax3 {
+    /* The image used */
+    background-image: url("images/RedBlue%20gradient.jpg");
+    /*        images/blackSilver%20gradient.jpg");*/
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.parallax4 {
+    /* The image used */
+    background-image: url("images/pinkYellow%20gradient.jpg");
+    /*        images/blackSilver%20gradient.jpg");*/
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+    display: inline-block;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+    display: inline-block;
+}
+
+
+
+
+
+
+/*//Social Media button classes. I've retrieved & edited some of these from a library by Valli*/
+
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+#social {
+    margin: 20px 10px;
+    text-align: center;
+}
+
+.smGlobalBtn {
+    /* global button class */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ddd;
+    /* add border to the buttons */
+    box-shadow: 0 3px 3px #999;
+    padding: 0px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 2em;
+    border-radius: 27px;
+    -moz-border-radius: 27px;
+    -webkit-border-radius: 27px;
+}
+
+/* facebook button class*/
+
+.facebookBtn {
+    background: #4060A5;
+}
+
+.facebookBtn:before {
+    /* use :before to add the relevant icons */
+    font-family: "FontAwesome";
+    content: "\f09a";
+    /* add facebook icon */
+}
+
+.facebookBtn:hover {
+    color: #4060A5;
+    background: #fff;
+    border-color: #4060A5;
+    /* change the border color on mouse hover */
+}
+
+/* twitter button class*/
+
+.twitterBtn {
+    background: #00ABE3;
+}
+
+.twitterBtn:before {
+    font-family: "FontAwesome";
+    content: "\f099";
+    /* add twitter icon */
+}
+
+.twitterBtn:hover {
+    color: #00ABE3;
+    background: #fff;
+    border-color: #00ABE3;
+}
+
+/* google plus button class*/
+
+.googleplusBtn {
+    background: #e64522;
+}
+
+.googleplusBtn:before {
+    font-family: "FontAwesome";
+    content: "\f0e0";
+    /* add googleplus icon */
+}
+
+.googleplusBtn:hover {
+    color: #e64522;
+    background: #fff;
+    border-color: #e64522;
+}
+
+/* linkedin button class*/
+
+.linkedinBtn {
+    background: #0094BC;
+}
+
+.linkedinBtn:before {
+    font-family: "FontAwesome";
+    content: "\f0e1";
+    /* add linkedin icon */
+}
+
+.linkedinBtn:hover {
+    color: #0094BC;
+    background: #fff;
+    border-color: #0094BC;
+}
+
+/* pinterest button class*/
+
+.pinterestBtn {
+    background: #cb2027;
+}
+
+.pinterestBtn:before {
+    font-family: "FontAwesome";
+    content: "\f0d2";
+    /* add pinterest icon */
+}
+
+.pinterestBtn:hover {
+    color: #cb2027;
+    background: #fff;
+    border-color: #cb2027;
+}
+
+/* tumblr button class*/
+
+.tumblrBtn {
+    background: #3a5876;
+}
+
+.tumblrBtn:before {
+    font-family: "FontAwesome";
+    content: "\f173";
+    /* add tumblr icon */
+}
+
+.tumblrBtn:hover {
+    color: #3a5876;
+    background: #fff;
+    border-color: #3a5876;
+}
+
+/* rss button class*/
+
+.rssBtn {
+    background: #e88845;
+}
+
+.rssBtn:before {
+    font-family: "FontAwesome";
+    content: "\f09e";
+    /* add rss icon */
+}
+
+.rssBtn:hover {
+    color: #e88845;
+    background: #fff;
+    border-color: #e88845;
+}
+
+
+/* GITHUB button class*/
+
+.gitBtn {
+    background: black;
+}
+
+.gitBtn:before {
+    font-family: "FontAwesome";
+    content: "\f092";
+    /* add rss icon */
+}
+
+.gitBtn:hover {
+    color: black;
+    background: white;
+    border-color: darkgreen;
+}
+
+/* facebook button class*/
+
+.phoneBtn {
+    background: darkcyan;
+}
+
+.phoneBtn:before {
+    /* use :before to add the relevant icons */
+    font-family: "FontAwesome";
+    content: "\f095";
+    /* add facebook icon */
+}
+
+.phoneBtn:hover {
+    color: #4060A5;
+    background: #fff;
+    border-color: #4060A5;
+    /* change the border color on mouse hover */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+body {
+    position: relative;
+}

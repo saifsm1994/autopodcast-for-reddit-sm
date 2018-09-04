@@ -1,0 +1,38 @@
+<!-- views/pages/Autopodcast.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+
+<body class="container0">
+
+    <!--    <header>-->
+    <% include ../views/partials/navbar  %>
+        <!--    </header>-->
+
+    <main>
+    <div class="container">
+        <div class="jumbotron">
+                <h1 class="display-4">Welcome to my reddit Auto-Podcast API.</h1>
+                <p class="lead">This API calls the reddit scraping api & the text formating before producing an audio file of all posts on a particular subreddit page</p>
+                <hr class="my-4">
+                <p>This uses the relatively expensive google Wavenet API for voices. As such please note that calls may be limited.</p>
+        </div>
+                    
+        <form  action="/api/redditApi/autoPodcast" method="post">
+            <% include ../views/partials/redditForm  %>
+        </form>
+
+        <% include ../views/partials/footer %>
+
+    </div>
+    </main>
+
+
+
+</body>
+
+</html>

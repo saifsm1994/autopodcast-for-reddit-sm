@@ -1,0 +1,39 @@
+<!-- views/pages/Autopodcast.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+
+<body class="container0">
+
+    <!--    <header>-->
+    <% include ../views/partials/navbar  %>
+        <!--    </header>-->
+
+    <main>
+    <div class="container">
+        <div class="jumbotron">
+                <h1 class="display-4">Welcome to my reddit Auto-Podcast [Full] API.</h1>
+                <p class="lead">This API calls the produces all of the content on a given subreddit page.</p>
+                <hr class="my-4">
+                <p>This uses the relatively expensive google Wavenet API for voices. As such please understand that we are limited to a maximum of 40 articles, and 
+                    note that calls per minute may be limited.</p>
+        </div>
+                    
+        <form  action="/api/redditApi/autoPodcastComplete" method="post">
+            <% include ../views/partials/redditForm  %>
+        </form>
+
+        <% include ../views/partials/footer %>
+        
+    </div>
+    </main>
+
+
+
+</body>
+
+</html>

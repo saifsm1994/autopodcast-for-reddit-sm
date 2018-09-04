@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+    <% include partials/head %>
+</head>
+
+<body class="" style="overflow-x: hidden;">
+    <!-- Navigation -->
+    <!--    <header>-->
+    <% include partials/navbar  %>
+        <!--    </header>-->
+
+
+
+        <main>
+            <div class="parallax3 jumbotron" id="home" style="height: 100%;">
+                <div class="row mt-5">
+                    <div class="col-lg-4 offset-lg-4">
+                        <h1 class="text-center text-white">Natural Time Parser API</h1>
+                    </div>
+                    <div class="col-lg-4 offset-lg-4">
+                        <h6 class="text-center text-white">An API which accepts post requests and returns parsed Natural and Unix times in a JSON object. (Example input: March 10 1994)</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 offset-lg-4 offset-md-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="card-body">
+                            <div class="text-center card text-white bg-info mb-3">
+                                <form action="/timer" method="POST">
+                                    <input type="text" name="timeInput" placeholder="Time">
+                                    <button>
+                                        I have entered a date
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </main>
+
+        <footer>
+            <% include partials/footer %>
+        </footer>
+
+        <script>
+            $(document).ready(function() {
+                $('[data-toggle="dropdown"]').dropdown();
+            });
+
+        </script>
+
+</body>
+
+</html>
