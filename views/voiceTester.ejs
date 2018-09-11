@@ -16,15 +16,15 @@
     <main>
     <div class="container">
         <div class="jumbotron">
-                <h1 class="display-4">Welcome to my reddit Auto-Podcast API.</h1>
-                <p class="lead">This API calls the reddit scraping api & the text formating before producing an audio file of all posts on a particular subreddit page</p>
+                <h1 class="display-4">Welcome to my google Wavenet Tester.</h1>
+                <p class="lead">This App accepts a get request per the form below and returns an mp3 of the input text in the chosen voice.</p>
                 <hr class="my-4">
                 <p>This uses the relatively expensive google Wavenet API for voices. As such please note that calls may be limited.</p>
                 <p style="color: red;">Warning: Audio files have a 5000 character limit. Files which are longer than this will be truncated</p>
 
         </div>     
-        <form  action="/api/redditApi/autoPodcast" method="post">
-            <% include ../views/partials/redditForm  %>
+        <form  action="/api/redditApi/voiceTestMe" method="post">
+            <% include ../views/partials/testerForm  %>
         </form>
     </div>
     </main>

@@ -1,0 +1,53 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+
+<body class="">
+
+    <% include ../views/partials/navbar  %>
+
+    <main>
+    <div class="container">
+        <div class="jumbotron">
+                <h1 class="display-4">Voice Samples</h1>
+                <p class="lead">Below are samples of all Google and Amazon voices. Voices marked Wavenet are $16/million characters. Other voices are $4/million. </p>
+                <!-- <p class="lead" style="color: red">Warning: These files may not work with certain mp3 players such as VLC. </p> -->
+                <hr class="my-4">
+                <!-- <p>It uses regular consumer calls and is therefore limited in the number of daily uses.</p> -->
+                <div class="row">
+
+                <% if(locals.fileMp3) { %>
+                <% locals.fileMp3.forEach((element,index) => { %>
+                    <div class="col-lg-4 col-md-12" style="margin-top: 25px; border: black solid 2px">
+                    <p>Voice: <%= locals.voiceTitle[index] %></p>
+                    <audio controls>
+                        <source src="
+                        <% if (element) { %>
+                            <%= "/voiceSamples/" + element%>
+                            <% } %>
+                            " type="audio/mpeg">
+                      Your browser does not support the audio element.
+                      </audio>
+                    </div>
+                 <% }) %>
+                 <% } %>
+                </div>
+                 <br><br>
+
+        
+            </div>
+        </div>
+    </main>
+
+    <% include ../views/partials/footer %>
+
+
+    
+</body>
+
+</html>

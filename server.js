@@ -403,6 +403,61 @@ app.get('/obtainArticles/', (req, res) => {
 
 
 
+// Section 1.5 Voice Tester Google
+app.route('/api/redditApi/voiceTestMe')
+.post(function (req, res) {
+
+    outputFile = "./tempDownloads/download_" + Math.floor(Math.random() * 1000000000) + ".mp3"
+    let textToMp3 = "She sells sea shells down by the sea shore... The reindeer in spain was hit mainly by the plane...";
+    let voiceChoice = "en-AU-Standard-A";
+    let Gender = "FEMALE";
+    let Lang = "en-AU";
+    linkarray = [];
+    if(req.body.voiceChoiceFemale && req.body.voiceChoiceFemale != "Blank"){voiceChoice = req.body.voiceChoiceFemale; Gender = "FEMALE"; Lang = voiceChoice.slice(0,5);} 
+    if ((req.body.voiceChoiceFemale == "Blank" || !req.body.voiceChoiceFemale) && req.body.voiceChoiceMale && req.body.voiceChoiceMale != "Blank"){voiceChoice = req.body.voiceChoiceMale; Gender = "MALE"; Lang = voiceChoice.slice(0,5);}
+    // if (req.body.voiceChoice && req.body.voiceChoice != "en-AU-Standard-A" ){Lang = voiceChoice.slice(0,5);}
+    if (req.body.textToMp3){textToMp3 = req.body.textToMp3}
+
+
+    setTimeout(() => {
+        getAudioCustomVoice(textToMp3,voiceChoice,Lang,Gender)
+        console.log(textToMp3,voiceChoice,Lang,Gender)
+    }, 200);
+
+    setTimeout(() => {
+        res.render('download.ejs', {
+         link: outputFile.slice(1)
+     })}, 600);
+
+
+
+})
+
+
+//This route gets all voice samples in a given folder.
+app.route('/voiceSamples')
+.get(function (req, res) {
+    let fileArray = [];
+    fs.readdirSync(sampleFolder).forEach(file => {
+    console.log(file);
+    console.log("called")
+    fileArray.push(file);
+    })
+    setTimeout(() => {
+        res.render('playSampleArray.ejs', {fileMp3: fileArray, voiceTitle: fileArray  })
+    }, 1000);
+
+   
+})
+
+app.get('/voiceSamples/:downloadFile', function(req, res){
+    var file = __dirname + '/voiceSamples/' + req.params.downloadFile;
+    res.download(file); // Set disposition and send it.
+  });
+
+
+
+  
 
 
 

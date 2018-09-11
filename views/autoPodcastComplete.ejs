@@ -7,31 +7,30 @@
     <% include ../views/partials/head %>
 </head>
 
-<body class="container0">
+<body class="">
 
     <!--    <header>-->
     <% include ../views/partials/navbar  %>
-        <!--    </header>-->
+    <!--    </header>-->
 
     <main>
-    <div class="container">
-        <div class="jumbotron">
+        <div class="container">
+            <div class="jumbotron">
                 <h1 class="display-4">Welcome to my reddit Auto-Podcast [Full] API.</h1>
                 <p class="lead">This API calls the produces all of the content on a given subreddit page.</p>
                 <hr class="my-4">
-                <p>This uses the relatively expensive google Wavenet API for voices. As such please understand that we are limited to a maximum of 40 articles, and 
+                <p>This uses the free tier of the Google Wavenet API for voices. As such please understand that we are limited to a maximum of 40 articles, and 
                     note that calls per minute may be limited.</p>
+                    <p style="color: red;">Warning: Audio files have a 5000 character limit. Files which are longer than this will be truncated</p>
+                    <p style="color: red;">Note: It will take 20-40 seconds to load the next page</p>
+                </div>        
+            <form  action="/api/redditApi/autoPodcastComplete" method="post">
+                <% include ../views/partials/redditForm  %>
+            </form>
         </div>
-                    
-        <form  action="/api/redditApi/autoPodcastComplete" method="post">
-            <% include ../views/partials/redditForm  %>
-        </form>
-
-        <% include ../views/partials/footer %>
-        
-    </div>
     </main>
 
+    <% include ../views/partials/footer %>
 
 
 </body>
